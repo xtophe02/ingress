@@ -1,3 +1,12 @@
 [submodule "myportofolio"]
 	path = myportofolio
 	url = https://github.com/xtophe02/myportofolio
+[submodule "yelpcamp"]
+	path = yelpcamp
+	url = https://github.com/xtophe02/yelpcamp
+[submodule "robotfriends"]
+	path = robotfriends
+	url = https://github.com/xtophe02/robotfriends
+[submodule "facerecognition"]
+	path = facerecognition
+	url = https://github.com/xtophe02/facerecognition
