@@ -15,6 +15,6 @@ spec:
     config:
       - http01:
         ingressClass: nginx
-      domains:
-        - christophemoreira.com
-        - wwww.christophemoreira.com
+        domains:
+          - christophemoreira.com
+          - wwww.christophemoreira.com
