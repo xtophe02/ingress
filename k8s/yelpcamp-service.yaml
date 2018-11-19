@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yelpcamp-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: yelpcamp
+  template:
+    metadata:
+      labels:
+        component: yelpcamp
+    spec:
+      containers:
+        - name: yelpcamp
+          image: xtophe02/yelpcamp
+          ports:
+            - containerPort: 3002
+          env:
+            - name: DATABASEURL
+              valueFrom:
+                secretKeyRef:
+                  name: databaseurl
+                  key: DATABASEURL
+            - name: GOOGLEAPI
+              valueFrom:
+                secretKeyRef:
+                  name: googleapi
+                  key: GOOGLEAPI
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yelpcamp-service
+spec:
+  type: ClusterIP
+  selector:
+    component: yelpcamp
+  ports:
+    - port: 3002
+      targetPort: 3002

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myportofolio-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: myportofolio
+  template:
+    metadata:
+      labels:
+        component: myportofolio
+    spec:
+      containers:
+        - name: myportofolio
+          image: xtophe02/myportofolio
+          ports:
+            - containerPort: 3000
+          # env:
+          #   - name: robotfriends
+          #     value: robotfriends-service
+          #   - name: yelpcamp
+          #     value: yelpcamp-service
+          #   - name: facerecognition
+          #     value: facerecognition-service
+          #   - name: facerecognitionapi
+          #     value: facerecognitionapi-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myportofolio-service
+spec:
+  type: ClusterIP
+  selector:
+    component: myportofolio
+  ports:
+    - port: 3000
+      targetPort: 3000

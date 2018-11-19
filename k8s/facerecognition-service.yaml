@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facerecognition-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: facerecognition
+  template:
+    metadata:
+      labels:
+        component: facerecognition
+    spec:
+      containers:
+        - name: facerecognition
+          image: xtophe02/facerecognition
+          ports:
+            - containerPort: 3003
+          env:
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: postgres-service
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
+            - name: CLARIFAIAPI
+              valueFrom:
+                secretKeyRef:
+                  name: clarifaiapi
+                  key: CLARIFAIAPI
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: facerecognition-service
+spec:
+  type: ClusterIP
+  selector:
+    component: facerecognition
+  ports:
+    - port: 3003
+      targetPort: 3003
