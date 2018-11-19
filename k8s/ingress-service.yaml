@@ -6,23 +6,54 @@ metadata:
     kubernetes.io/ingress.class: nginx
     # remove /api/ from route
     # nginx.ingress.kubernetes.io/rewrite-target: /
+    #after https
+    certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  #after https
+  tls:
+    - hosts:
+        - christophemoreira.com
+        - www.christophemoreira.com
+      secretName: christophemoreira-com
   rules:
-    - http:
+    # only after to submit certificate and issuer
+    - host: christophemoreira.com
+      http:
         paths:
           - path: /
             backend:
               serviceName: myportofolio-service
               servicePort: 3000
-          - path: /robotfriends/
+          - path: /robotfriends
             backend:
               serviceName: robotfriends-service
               servicePort: 3001
-          - path: /yelpcamp/
+          - path: /yelpcamp
             backend:
               serviceName: yelpcamp-service
               servicePort: 3002
-          - path: /facerecognition/
+          - path: /facerecognition
+            backend:
+              serviceName: facerecognition-service
+              servicePort: 3003
+    # only after to submit certificate and issuer
+    - host: www.christophemoreira.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: myportofolio-service
+              servicePort: 3000
+          - path: /robotfriends
+            backend:
+              serviceName: robotfriends-service
+              servicePort: 3001
+          - path: /yelpcamp
+            backend:
+              serviceName: yelpcamp-service
+              servicePort: 3002
+          - path: /facerecognition
             backend:
               serviceName: facerecognition-service
               servicePort: 3003
