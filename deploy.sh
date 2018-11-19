@@ -15,7 +15,7 @@ docker push xtophe02/facerecognition:$GIT_SHA
 docker push xtophe02/myportofolio:$GIT_SHA
 
 kubectl apply -f k8s
-kubectl set image deployments/robotfriends-service robotfriends=xtophe02/robotfriends:$GIT_SHA
-kubectl set image deployments/yelpcamp-service yelpcamp=xtophe02/yelpcamp:$GIT_SHA
-kubectl set image deployments/facerecognition-service facerecognition=xtophe02/facerecognition:$GIT_SHA
-kubectl set image deployments/myportofolio-service myportofolio=xtophe02/myportofolio:$GIT_SHA
+kubectl set image deployments/robotfriends-deploy robotfriends=xtophe02/robotfriends:$GIT_SHA
+kubectl set image deployments/yelpcamp-deploy yelpcamp=xtophe02/yelpcamp:$GIT_SHA
+kubectl set image deployments/facerecognition-deploy facerecognition=xtophe02/facerecognition:$GIT_SHA
+kubectl set image deployments/myportofolio-deploy myportofolio=xtophe02/myportofolio:$GIT_SHA
