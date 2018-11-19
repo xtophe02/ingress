@@ -17,4 +17,4 @@ spec:
           ingressClass: nginx
         domains:
           - christophemoreira.com
-          - wwww.christophemoreira.com
+          - www.christophemoreira.com
