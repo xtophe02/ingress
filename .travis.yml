@@ -15,7 +15,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project my-webpage-223012
   - gcloud config set compute/zone europe-west1
-  - gcloud container clusters get-credentials multi-cluster
+  - gcloud container clusters get-credentials my-website
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   #- docker build -t xtophe02/react-app .
 
