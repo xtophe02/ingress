@@ -1,7 +1,7 @@
-docker build -t xtophe02/myportofolio:latest -t xtophe02/myportofolio:$GIT_SHA -f ../myportofolio/Dockerfile ../myportofolio
-docker build -t xtophe02/robotfriends:latest -t xtophe02/robotfriends:$GIT_SHA -f ../robotfriends/Dockerfile ../myportofolio
-docker build -t xtophe02/yelpcamp:latest -t xtophe02/yelpcamp:$GIT_SHA -f ../yelpcamp/Dockerfile ../myportofolio
-docker build -t xtophe02/facerecognition:latest -t xtophe02/facerecognition:$GIT_SHA -f ../facerecognition/Dockerfile ../myportofolio
+docker build -t xtophe02/myportofolio:latest -t xtophe02/myportofolio:$GIT_SHA -f ./myportofolio/Dockerfile ./myportofolio
+docker build -t xtophe02/robotfriends:latest -t xtophe02/robotfriends:$GIT_SHA -f ./robotfriends/Dockerfile ./robotfriends
+docker build -t xtophe02/yelpcamp:latest -t xtophe02/yelpcamp:$GIT_SHA -f ./yelpcamp/Dockerfile ./yelpcamp
+docker build -t xtophe02/facerecognition:latest -t xtophe02/facerecognition:$GIT_SHA -f ./facerecognition/Dockerfile ./facerecognition
 
 
 docker push xtophe02/yelpcamp:latest
