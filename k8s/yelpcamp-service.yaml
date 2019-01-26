@@ -34,9 +34,10 @@ kind: Service
 metadata:
   name: yelpcamp-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     component: yelpcamp
   ports:
     - port: 3002
       targetPort: 3002
+      nodePort: 30000
